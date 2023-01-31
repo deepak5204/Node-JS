@@ -6,8 +6,21 @@ const app = express();
 // console.log(__dirname);
 const publicPath = path.join(__dirname,'public'); // path folder help to acces directory path
 // console.log(publicPath);
+// app.use(express.static(publicPath));  //express.static() is used for load static page
 
-app.use(express.static(publicPath));  //express.static() is used for load static page
+// Remove Extension from URL 
+app.get('', (req, res)=>{
+    res.sendFile(`${publicPath}/index.html`);
+});
+
+app.get('/about', (req, res)=>{
+    res.sendFile(`${publicPath}/about.html`);
+});
+
+//link nopage found file 
+app.get('*', (req, res)=>{
+    res.sendFile(`${publicPath}/nopage.html`);
+});
 
 
 // app.get('', (req, res)=>{
