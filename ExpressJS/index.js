@@ -2,9 +2,24 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-//Load html files
-// console.log(__dirname);
 const publicPath = path.join(__dirname,'public'); // path folder help to acces directory path
+
+app.set('view engine','ejs');
+
+app.get('/profile', (req, res)=>{
+    const user = {
+        name: "deepak",
+        email: "abc123@gmail.com",
+        city: "xyz",
+        skills: ['html', 'css', 'javascript', 'java']
+    }
+    res.render('profile', {user});
+});
+
+app.get('/login', (req, res)=>{
+    res.render('login')
+});
+
 // console.log(publicPath);
 // app.use(express.static(publicPath));  //express.static() is used for load static page
 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>profile page</title>
+</head>
+<body>
+    <%-  //tell them to load html file    %>
+    <%- include('common/header'); %>
+    
+    <h1>Welcome <%= user.name %></h1>
+    <h2>Email: <%= user.email %></h2>
+    <h2>City: <%= user.city %></h2>
+    <ul>
+        <% user.skills.forEach((item) =>{%>
+            <li><%= item %></li>
+            <% }) %>
+    </ul>
+</body>
+</html>
