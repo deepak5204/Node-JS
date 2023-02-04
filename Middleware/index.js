@@ -13,7 +13,7 @@ const reqFilter = (req, res, next) =>{
     }
 }
 
-app.use(reqFilter);
+// app.use(reqFilter); //--> application level middleware
 
 app.get('/',(req, res)=>{
     res.send("Welcome to home page");
@@ -21,6 +21,11 @@ app.get('/',(req, res)=>{
 
 app.get('/users',(req, res)=>{
     res.send("Welcome to users page");
+});
+
+//Route level middleware (middleware in a single routes)
+app.get('/about' , reqFilter ,(req, res)=>{
+    res.send("Welcome to about page");
 });
 
 app.listen(5000);
